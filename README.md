@@ -13,7 +13,7 @@ The container installs flask to an Ubuntu 20.04 image, and hosts a super simple 
 
 To get command execution, one needs to get access to the python 'object' class, which allows the user to access all of the defined python classes (by calling `__subclasses__()` on the object class), instead of the few made avalible in the sandbox. From there, they are able to access the subprocess.Popen class, which allows for ACE.
 Example payload:
-equation=''.__class__.mro()[-1].__subclasses__()[301]('id', shell=True, stdout=-1).communicate()[0]
+`equation=''.__class__.mro()[-1].__subclasses__()[301]('id', shell=True, stdout=-1).communicate()[0]`
 
 ## Troubleshooting
 
