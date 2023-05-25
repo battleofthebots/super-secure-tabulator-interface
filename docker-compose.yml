@@ -1,0 +1,8 @@
+services:
+  flask:
+    build: .
+    ports: 
+      - 80:80
+    tty: true
+    stdin_open: true
+      
