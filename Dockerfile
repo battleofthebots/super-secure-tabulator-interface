@@ -1,6 +1,5 @@
-FROM ubuntu:20.04
-
- RUN apt-get update && apt-get install -y python3-flask
+FROM ghcr.io/battleofthebots/botb-base-image:latest
+EXPOSE 80
 
 COPY ./app.py /app.py
 
