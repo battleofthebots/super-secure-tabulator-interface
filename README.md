@@ -1,19 +1,18 @@
 # Super Secure Tabulator Interface
 
-# NOTE
+A calculator is a secure program to implement server side right?
+
+`app.py`
+
+# Solving
+
 As it is, this challenge is incredibly easy. To make it more difficult, different validations could be run on the equation parameter's input to check if it has banned characters, or to check if it returns an integer
 
 This challenge requires solvers to realize that any user input passed into the equation parameter is rendered using Jinja2's templating engine, and can lead to command execution.
 
-## Infra
-
-The container installs flask to an Ubuntu 20.04 image, and hosts a super simple calculator app on port 80. 
-
-## Solution
-
 To get command execution, one needs to get access to the python 'object' class, which allows the user to access all of the defined python classes (by calling `__subclasses__()` on the object class), instead of the few made avalible in the sandbox. From there, they are able to access the subprocess.Popen class, which allows for ACE.
 Example payload:
-`equation=''.__class__.mro()[-1].__subclasses__()[301]('id', shell=True, stdout=-1).communicate()[0]`
+`request.application.__globals__.__builtins__.__import__('os').popen('ls').read()`
 
 ## Troubleshooting
 
