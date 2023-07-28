@@ -1,6 +1,6 @@
 FROM ghcr.io/battleofthebots/botb-base-image:latest
-EXPOSE 80
 
+USER user
 COPY ./app.py .
 CMD python3 /app.py
 
